@@ -5,12 +5,12 @@ export default function Tutorials() {
     {
       title: 'MC Java 电脑端',
       description: '专为Java版Minecraft提供完整的开服指南和教学',
-      videoUrl: 'https://image.shanshui.site/file/1772292001644_java.mp4',
+      videoUrl: 'https://pd123.my.canvasite.cn/home/_assets/video/9c0b5b547dc714d026f39d5b3e52f831.mp4',
     },
     {
       title: 'MC 基岩版',
       description: '基岩版Minecraft服务器部署完整解决方案',
-      videoUrl: 'https://image.shanshui.site/file/1772291978382_bedrock.mp4',
+      videoUrl: 'https://pd123.my.canvasite.cn/home/_assets/video/a44ef0644f18f207c58e41adbc725b0f.mp4',
     },
   ];
 
