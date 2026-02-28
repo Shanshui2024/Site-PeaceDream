@@ -80,7 +80,7 @@ export default function Navigation({ currentPage = 'home' }) {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '24px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', fontSize: '20px', fontWeight: '600', color: '#000', letterSpacing: '-0.5px' }}>
             <img 
-              src="/favicon.ico" 
+              src="https://image.shanshui.site/file/1772292721030_1753d26de273f43c6cc9077059ff3040.webp" 
               alt="PeaceDream Logo" 
               className="logo"
               onError={(e) => {
