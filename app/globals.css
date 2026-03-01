@@ -12,6 +12,63 @@
   }
 }
 
+/* 响应式设计 */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  main {
+    padding: 40px 15px !important;
+  }
+  
+  h1 {
+    font-size: 32px !important;
+  }
+  
+  h2 {
+    font-size: 20px !important;
+  }
+  
+  .modpack-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  
+  .tutorial-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  
+  nav div:first-child {
+    font-size: 16px !important;
+  }
+  
+  nav div:last-child {
+    gap: 15px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 30px 10px !important;
+  }
+  
+  h1 {
+    font-size: 28px !important;
+  }
+  
+  .modpack-card {
+    padding: 20px !important;
+    height: auto !important;
+  }
+  
+  nav {
+    padding: 15px 10px !important;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

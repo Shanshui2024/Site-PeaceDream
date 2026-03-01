@@ -48,7 +48,7 @@ export default function ModpackGrid({ modpacks }) {
       
       <section style={{ marginBottom: '60px', padding: '0 20px' }}>
         <h2 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '30px', letterSpacing: '-0.5px' }}>模组整合包</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+        <div className="modpack-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
           {modpacks.map((pack, idx) => (
             <div 
               key={idx}
@@ -60,6 +60,8 @@ export default function ModpackGrid({ modpacks }) {
                 borderRadius: '8px', 
                 border: '1px solid #e0e0e0', 
                 transition: 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                position: 'relative',
+                height: '300px',
                 ...(visibleIndices.has(idx) && {
                   animationDelay: `${Math.min(idx * 0.05, 0.4)}s`
                 })
@@ -76,7 +78,9 @@ export default function ModpackGrid({ modpacks }) {
               </div>
               <p style={{ fontSize: '14px', color: '#666', marginBottom: '12px', lineHeight: '1.6' }}>{pack.tips}</p>
               {pack.tip && <p style={{ fontSize: '13px', color: '#999', marginBottom: '20px', fontStyle: 'italic' }}>💡 {pack.tip}</p>}
-              <a href={pack.link} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', backgroundColor: '#f5f5f5', color: '#000', padding: '10px 20px', textDecoration: 'none', borderRadius: '4px', fontSize: '13px', fontWeight: '500', border: '1px solid #e0e0e0', transition: 'all 0.2s' }} onMouseOver={(e) => { e.target.style.backgroundColor = '#000'; e.target.style.color = '#fff'; e.target.style.borderColor = '#000'; }} onMouseOut={(e) => { e.target.style.backgroundColor = '#f5f5f5'; e.target.style.color = '#000'; e.target.style.borderColor = '#e0e0e0'; }}>夸克网盘 {pack.code && `(${pack.code})`}</a>
+              <div style={{ position: 'absolute', bottom: '20px', left: '20px' }}>
+                <a href={pack.link} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', backgroundColor: '#f5f5f5', color: '#000', padding: '10px 20px', textDecoration: 'none', borderRadius: '4px', fontSize: '13px', fontWeight: '500', border: '1px solid #e0e0e0', transition: 'all 0.2s' }} onMouseOver={(e) => { e.target.style.backgroundColor = '#000'; e.target.style.color = '#fff'; e.target.style.borderColor = '#000'; }} onMouseOut={(e) => { e.target.style.backgroundColor = '#f5f5f5'; e.target.style.color = '#000'; e.target.style.borderColor = '#e0e0e0'; }}>夸克网盘 {pack.code && `(${pack.code})`}</a>
+              </div>
             </div>
           ))}
         </div>

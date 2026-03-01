@@ -29,7 +29,7 @@ export default function Tutorials() {
       <section style={{ marginBottom: '60px', padding: '0 20px' }}>
         <h2 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '30px', letterSpacing: '-0.5px' }}>教程</h2>
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+        <div className="tutorial-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
           {tutorials.map((tutorial, idx) => (
             <div 
               key={idx} 
@@ -39,11 +39,20 @@ export default function Tutorials() {
               onMouseOut={(e) => { e.currentTarget.style.borderColor = '#e0e0e0'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%', backgroundColor: '#000', overflow: 'hidden' }}>
-                <iframe
+                <video
                   src={tutorial.videoUrl}
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                  allowFullScreen
-                  allow="fullscreen"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none', objectFit: 'cover' }}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  controlsList="nodownload"
+                  onContextMenu={(e) => e.preventDefault()}
+                  onLoadStart={(e) => {
+                    // 视频加载时默认静音，但允许用户通过控制条调节
+                    e.target.muted = true;
+                  }}
                 />
               </div>
               <div style={{ padding: '24px' }}>
