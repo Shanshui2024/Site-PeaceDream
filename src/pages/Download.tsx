@@ -1,0 +1,339 @@
+export default function Download() {
+    const featured = {
+        name: 'Chaos Adventure | 混沌冒险生存',
+        version: '1.20.1',
+        type: '冒险类、生存类',
+        description: '整合包作者：黑帝斯丶 S。混沌冒险生存整合包，带你体验不一样的冒险之旅。丰富的任务系统，强大的 BOSS 战，探索未知的世界。',
+        download: 'https://pan.quark.cn/s/xxxxx',
+        downloadCode: 'xxxx',
+        image: 'https://pd123.my.canvasite.cn/download/_assets/media/b0eec2c1c7db0445cf9dac588e45abfd.png',
+    }
+
+    const modPacks = [
+        {
+            id: 1,
+            name: '幽匿生存',
+            version: '1.19.2',
+            type: '生存类、冒险类',
+            description: '在这个整合包中，我们需要对抗古老的幽匿力量，病毒会在五天后爆发。其病毒每隔一段时间就会进化一次，我们的任务是击杀古代幽匿心脏，阻止病毒扩散。',
+            tip: '先切换创造，使用【开发者 幽匿主茎发生器】后才能开始游戏！',
+            video: 'https://www.bilibili.com/video/BV13f421z7ub/?share_source=copy_web&vd_source=2225adc426f223f806ea0c78bb811ff5',
+            download: 'https://pan.quark.cn/s/31307c2a41b9',
+            downloadCode: '5pqX',
+        },
+        {
+            id: 2,
+            name: '乌托邦 3.2',
+            version: '1.20.1',
+            type: '生存类、趣味类',
+            description: '500+ 模组，在花海里感受宁静，在山峰之巅寻找勇气，在音符间倾听人生。记录游戏每一处风景，丰富的任务系统。这个充满诗意的乌托邦，期待旅者的到来！',
+            tip: '低配电脑玩家谨慎使用！',
+            video: 'https://www.bilibili.com/video/BV1Kf421X7cg/?share_source=copy_web&vd_source=2225adc426f223f806ea0c78bb811ff5',
+            download: 'https://pan.quark.cn/s/752daeace2b1',
+            downloadCode: 'cjJi',
+        },
+        {
+            id: 3,
+            name: 'Earth 3',
+            version: '1.20.1',
+            type: '生存类、冒险类',
+            description: '300+ 模组，更多的怪物和工具，魔改冒险休闲整合，更适合冒险！',
+            tip: '低配电脑玩家谨慎使用！',
+            video: 'https://www.bilibili.com/video/BV1Ke41127bg/?share_source=copy_web&vd_source=2225adc426f223f806ea0c78bb811ff5',
+            download: 'https://pan.quark.cn/s/35f61982aaec',
+            downloadCode: '',
+        },
+        {
+            id: 4,
+            name: 'The First City',
+            version: '1.19.3',
+            type: '剧情类',
+            description: '本客户端重点对远古城市进行了重点的改造，击杀坚守者，插入钥匙，来探索这不为人知的真正城堡吧！',
+            tip: '游戏前期需要长时间生存攒齐装备，并且要找远古城市。',
+            warning: '如要体验这个模组，请务必创建一个全新的世界来游玩，且除了前置模组外不要添加任何其他模组，否则后果自负!',
+            video: 'https://www.bilibili.com/video/BV1T1421t7X4/?share_source=copy_web&vd_source=2225adc426f223f806ea0c78bb811ff5',
+            download: 'https://pan.quark.cn/s/f943149a34b6',
+            downloadCode: '',
+        },
+        {
+            id: 5,
+            name: '无尽贪婪',
+            version: '1.18.2',
+            type: '生存类、耗时间',
+            description: '没别的，肝就完了！（已提供 ProjectE 等价交换模组）',
+            tip: '本整合包自制，知悉后可转载。',
+            download: 'https://pan.quark.cn/s/9e41593e707b',
+            downloadCode: '',
+        },
+        {
+            id: 6,
+            name: '灾变',
+            version: '1.20.1',
+            type: '生存类、冒险类',
+            description: '本客户端由史诗战斗等各种 boss mods 叠加而成，其中还有暮色森林等，比较好玩，史诗战斗 mod 使你的攻击更加帅气！欢迎入坑！',
+            tip: '你可能要提前适应适应史诗战斗 awa',
+            video: 'https://www.bilibili.com/video/BV1LE421379P/?share_source=copy_web&vd_source=2225adc426f223f806ea0c78bb811ff5',
+            download: 'https://pan.quark.cn/s/f4ed1c0be4db',
+            downloadCode: '',
+        },
+        {
+            id: 7,
+            name: '惊变 100 天',
+            version: '1.20.1',
+            type: '生存类、冒险类',
+            description: '僵尸病毒已经蔓延到全球并消灭了人类。你是剩下的一切，好吧 - 面对无尽的感染浪潮。你能坚持多久？僵尸每隔 10 天就会升级一次，最终进化为 50 天。尸潮、血月和超级血月，你是否能抵挡住？！',
+            tip: '僵尸过多可能会导致 FPS 大幅下降。',
+            video: 'https://www.bilibili.com/read/cv13893234/',
+            download: 'https://pan.quark.cn/s/9d0a64c1dce2',
+            downloadCode: '',
+        },
+        {
+            id: 8,
+            name: '生活大冒险',
+            version: '1.20.1',
+            type: '生存类、冒险类',
+            description: '村民变成了可以正常交流的人类，并且可以正常建立关系，你敢信？生活大冒险是最适合用来养老的啦！',
+            tip: '别舒服死了 awa',
+            video: 'https://www.bilibili.com/video/BV1cr4213767/?share_source=copy_web&vd_source=2225adc426f223f806ea0c78bb811ff5',
+            download: 'https://pan.quark.cn/s/b61043762d99',
+            downloadCode: '',
+        },
+        {
+            id: 9,
+            name: '粑粑空岛',
+            version: '1.20.1',
+            type: '空岛类',
+            description: '一个空岛，但是开局只有一个茅坑？吃小粪便有概率掉竹子，吃粪便块有概率掉树苗。这种情况下我该怎么通关这个空岛？！',
+            tip: '对准茅坑按 Shift + 右键可以拉屎。',
+            video: 'https://www.bilibili.com/video/BV18142127f7/?share_source=copy_web&vd_source=2225adc426f223f806ea0c78bb811ff5',
+            download: 'https://pan.quark.cn/s/3fd341d7ea5c',
+            downloadCode: '',
+        },
+        {
+            id: 10,
+            name: '吸血鬼生存',
+            version: '1.20.1',
+            type: '生存类',
+            description: '我的世界，但是我变成了吸血鬼？！这种情况下我该怎么生存？',
+            wiki: 'https://www.mcmod.cn/class/930.html',
+            download: 'https://pan.quark.cn/s/89aa3a4472b8',
+            downloadCode: '',
+        },
+        {
+            id: 11,
+            name: '幸运方块整合',
+            version: '1.20.1',
+            type: 'PVP 类',
+            description: '50+ 幸运方块整合，一次性玩个够！内置幸运方块多人 PVP 地图，和你的好朋友看看谁是欧皇谁是非酋吧！',
+            download: 'https://pan.quark.cn/s/afbb907783d7',
+            downloadCode: '',
+        },
+    ]
+
+    const resources = [
+        {
+            id: 1,
+            name: '刀哥语音包',
+            description: '那是什么刀？刀哥语音包！下载语音包，指定有你好果子吃！',
+            tip: '解压后使用。',
+            download: 'https://yepstudio.lanzouj.com/iR29B28p2k7a',
+        },
+        {
+            id: 2,
+            name: '神鹰黑手哥',
+            description: '小 b 崽子，敢不敢跟我比划比划！下了神鹰语音包，指定让你飞起来！',
+            tip: '解压后使用。',
+            download: 'https://yepstudio.lanzouj.com/ixNWO28p2k4h',
+        },
+        {
+            id: 3,
+            name: 'bandicam 录屏软件（免费已破解）',
+            description: '没有好的录屏软件？用 OBS 太卡？已配置好的录屏软件，支持全屏/窗口/摄像头录制，关键免费无水印，贼清晰！',
+            tip: '一定要解压，把解压好的东西放到同一个文件夹里面！可以把 Bandicam 本体创建个快捷方式放到桌面上哦~',
+            download: 'https://yepstudio.lanzouu.com/i50641t81wpc',
+        },
+    ]
+
+    const getDiskType = (url: string) => {
+        if (url.includes('quark')) return '夸克'
+        if (url.includes('lanzou')) return '蓝奏云'
+        if (url.includes('123pan')) return '123 盘'
+        return ''
+    }
+
+    return (
+        <div className="min-h-screen bg-gray-50">
+            <div className="max-w-6xl mx-auto px-6 py-12">
+                {/* Featured Section - Full Width Banner */}
+                <section className="mb-16">
+                    <div className="bg-black rounded-none overflow-hidden">
+                        <div className="max-w-4xl mx-auto py-12 px-6">
+                            <div className="flex flex-col items-center text-center">
+                                <img
+                                    src={featured.image}
+                                    alt={featured.name}
+                                    className="w-full max-w-2xl mb-6"
+                                />
+                                <h2 className="text-xl font-bold text-white mb-3">{featured.name}</h2>
+                                <p className="text-sm text-gray-400 mb-4">
+                                    版本：{featured.version} · 类型：{featured.type}
+                                </p>
+                                <p className="text-gray-300 mb-6 max-w-xl leading-relaxed">
+                                    {featured.description}
+                                </p>
+                                <div className="space-y-3 text-sm text-gray-400 mb-8">
+                                    <p>渠道 1：123 云盘（推荐使用网盘链接下载，00:55 起）</p>
+                                    <p className="break-all">网盘链接：https://pan.123pan.com/s/XXXXXX</p>
+                                    <p>渠道 2：夸克网盘（因账号问题可能无法分享，请使用备用以下下载地址）</p>
+                                    <p className="break-all">网盘链接：https://pan.quark.cn/s/xxxxxx</p>
+                                </div>
+                                <a
+                                    href={featured.download}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-8 py-3 border border-gray-600 bg-transparent text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
+                                >
+                                    {getDiskType(featured.download)}下载
+                                    {featured.downloadCode && (
+                                        <span className="ml-2 text-gray-400">提取码：{featured.downloadCode}</span>
+                                    )}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Must Read */}
+                <section id="must-read" className="mb-12">
+                    <h2 className="text-lg font-bold mb-4 text-gray-900">和梦团队下载专页必看</h2>
+                    <div className="bg-white rounded-lg p-6">
+                        <div className="space-y-2 text-sm text-gray-600 leading-relaxed">
+                            <p>1.本网站所有内容均已经过真人真机上机测试，合法有效无毒，请放心使用。</p>
+                            <p>2.并非所有资源均同意转载分享，客户端所有权归原作者所有，若侵权请及时联系，我们会及时删除。侵权必究，让我们共同守护知识产权。</p>
+                            <p>3.内容下载会使用夸克网盘，请确保夸克网盘账号是否可用。</p>
+                            <p>4.所有的文件都建议解压后使用！</p>
+                            <p>5.群主在线期间，若您不想在网盘内下载，可以私信站主下载！请联系 3059400953。</p>
+                            <p>6.若想上传你的资源，欢迎联系 QQ：3059400953！</p>
+                            <p>7.我们对所有的下载进行了初步的更新，您只需点击下划线的内容即可快速跳转网站！</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Down Arrow */}
+                <div className="flex justify-center mb-12">
+                    <div className="flex flex-col items-center text-gray-400">
+                        <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                        <span className="text-xs mt-2">向下开始</span>
+                    </div>
+                </div>
+
+                {/* Mod Packs */}
+                <section id="modpacks" className="mb-12">
+                    <h2 className="text-lg font-bold mb-6 text-gray-900">第一板块：MC 整合包分享</h2>
+                    <div className="grid md:grid-cols-2 gap-4">
+                        {modPacks.map((pack) => (
+                            <div
+                                key={pack.id}
+                                className="bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 transition-all"
+                            >
+                                <h3 className="text-sm font-bold mb-2 text-gray-900">
+                                    {pack.id}. {pack.name}
+                                </h3>
+                                <p className="text-xs text-gray-600 mb-2 leading-relaxed line-clamp-2">
+                                    {pack.description}
+                                </p>
+                                <div className="space-y-1 text-xs text-gray-500">
+                                    <p>
+                                        <span className="text-gray-400">版本：</span>
+                                        {pack.version} - {pack.type}
+                                    </p>
+                                    {pack.tip && (
+                                        <p>
+                                            <span className="text-gray-400">提示：</span>
+                                            {pack.tip}
+                                        </p>
+                                    )}
+                                    {pack.warning && (
+                                        <p className="text-red-500">
+                                            <span className="text-red-400">警告：</span>
+                                            {pack.warning}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className="mt-3 pt-3 border-t border-gray-100 flex flex-wrap gap-2">
+                                    <a
+                                        href={pack.download}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-3 py-1.5 border border-gray-300 bg-white text-gray-700 text-xs font-medium rounded hover:bg-gray-50 transition-colors"
+                                    >
+                                        {getDiskType(pack.download)}下载
+                                        {pack.downloadCode && (
+                                            <span className="ml-1 text-gray-400">· {pack.downloadCode}</span>
+                                        )}
+                                    </a>
+                                    {pack.video && (
+                                        <a
+                                            href={pack.video}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center px-3 py-1.5 border border-gray-300 bg-white text-gray-700 text-xs font-medium rounded hover:bg-gray-50 transition-colors"
+                                        >
+                                            视频
+                                        </a>
+                                    )}
+                                    {pack.wiki && (
+                                        <a
+                                            href={pack.wiki}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center px-3 py-1.5 border border-gray-300 bg-white text-gray-700 text-xs font-medium rounded hover:bg-gray-50 transition-colors"
+                                        >
+                                            百科
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Resources */}
+                <section id="resources">
+                    <h2 className="text-lg font-bold mb-6 text-gray-900">第二板块：剪辑资源分享</h2>
+                    <div className="grid md:grid-cols-3 gap-4">
+                        {resources.map((resource) => (
+                            <div
+                                key={resource.id}
+                                className="bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 transition-all"
+                            >
+                                <h3 className="text-sm font-bold mb-2 text-gray-900">
+                                    {resource.name}
+                                </h3>
+                                <p className="text-xs text-gray-600 mb-2 leading-relaxed">
+                                    {resource.description}
+                                </p>
+                                {resource.tip && (
+                                    <p className="text-xs text-gray-400 mb-2">
+                                        <span className="font-medium">提示：</span>
+                                        {resource.tip}
+                                    </p>
+                                )}
+                                <a
+                                    href={resource.download}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-3 py-1.5 border border-gray-300 bg-white text-gray-700 text-xs font-medium rounded hover:bg-gray-50 transition-colors"
+                                >
+                                    {getDiskType(resource.download)}下载 →
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            </div>
+        </div>
+    )
+}
