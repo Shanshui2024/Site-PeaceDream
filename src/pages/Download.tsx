@@ -1,12 +1,11 @@
 export default function Download() {
     const featured = {
-        name: 'Chaos Adventure | 混沌冒险生存',
-        version: '1.20.1',
-        type: '冒险类、生存类',
-        description: '整合包作者：黑帝斯丶 S。混沌冒险生存整合包，带你体验不一样的冒险之旅。丰富的任务系统，强大的 BOSS 战，探索未知的世界。',
-        download: 'https://pan.quark.cn/s/xxxxx',
-        downloadCode: 'xxxx',
+        title: 'Chaos Adventure丨混乱冒险生存',
+        subtitle: '双工作室合作出品整合包项目',
+        description: '每个 Boss 都拥有独特的背景故事与挑战机制。怪物种类丰富，从普通小怪到精英怪逐步升级，带来多样战斗体验。武器设计炫酷且功能各异，让玩家在畅爽打击感中感受探索的乐趣。',
         image: 'https://pd123.my.canvasite.cn/download/_assets/media/b0eec2c1c7db0445cf9dac588e45abfd.png',
+        download123: 'https://www.123684.com/s/2GNBjv-Gtewh',
+        downloadQuark: 'https://pan.quark.cn/s/f81da337969c',
     }
 
     const modPacks = [
@@ -157,7 +156,7 @@ export default function Download() {
     const getDiskType = (url: string) => {
         if (url.includes('quark')) return '夸克'
         if (url.includes('lanzou')) return '蓝奏云'
-        if (url.includes('123pan')) return '123 盘'
+        if (url.includes('123pan') || url.includes('123684')) return '123 云盘'
         return ''
     }
 
@@ -171,33 +170,60 @@ export default function Download() {
                             <div className="flex flex-col items-center text-center">
                                 <img
                                     src={featured.image}
-                                    alt={featured.name}
+                                    alt={featured.title}
                                     className="w-full max-w-2xl mb-6"
                                 />
-                                <h2 className="text-xl font-bold text-white mb-3">{featured.name}</h2>
-                                <p className="text-sm text-gray-400 mb-4">
-                                    版本：{featured.version} · 类型：{featured.type}
-                                </p>
-                                <p className="text-gray-300 mb-6 max-w-xl leading-relaxed">
+                                <h2 className="text-xl font-bold text-white mb-2">{featured.title}</h2>
+                                <p className="text-sm text-gray-400 mb-4">{featured.subtitle}</p>
+                                <p className="text-gray-300 mb-8 max-w-xl leading-relaxed">
                                     {featured.description}
                                 </p>
+                                
+                                <h3 className="text-white font-bold mb-4">下载方式</h3>
+                                
                                 <div className="space-y-3 text-sm text-gray-400 mb-8">
-                                    <p>渠道 1：123 云盘（推荐使用网盘链接下载，00:55 起）</p>
-                                    <p className="break-all">网盘链接：https://pan.123pan.com/s/XXXXXX</p>
-                                    <p>渠道 2：夸克网盘（因账号问题可能无法分享，请使用备用以下下载地址）</p>
-                                    <p className="break-all">网盘链接：https://pan.quark.cn/s/xxxxxx</p>
+                                    <div>
+                                        <p className="mb-1">渠道 1：123 云盘（推荐使用浏览器下载，仅 0.5 元）</p>
+                                        <a
+                                            href={featured.download123}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-gray-500 hover:text-gray-300 underline break-all"
+                                        >
+                                            {featured.download123}
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <p className="mb-1">渠道 2：夸克网盘（团队夸克账号可使用，快速享用 SVIP 下载速度）</p>
+                                        <a
+                                            href={featured.downloadQuark}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-gray-500 hover:text-gray-300 underline break-all"
+                                        >
+                                            {featured.downloadQuark}
+                                        </a>
+                                    </div>
                                 </div>
-                                <a
-                                    href={featured.download}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center px-8 py-3 border border-gray-600 bg-transparent text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
-                                >
-                                    {getDiskType(featured.download)}下载
-                                    {featured.downloadCode && (
-                                        <span className="ml-2 text-gray-400">提取码：{featured.downloadCode}</span>
-                                    )}
-                                </a>
+
+                                <div className="flex gap-3">
+                                    <a
+                                        href={featured.download123}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-6 py-2.5 border border-gray-600 bg-transparent text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
+                                    >
+                                        123 云盘下载
+                                    </a>
+                                    <a
+                                        href={featured.downloadQuark}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-6 py-2.5 border border-gray-600 bg-transparent text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
+                                    >
+                                        夸克下载
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
