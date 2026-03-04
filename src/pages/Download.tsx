@@ -1,3 +1,5 @@
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
+
 export default function Download() {
     const featured = {
         title: 'Chaos Adventure丨混乱冒险生存',
@@ -162,77 +164,132 @@ export default function Download() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            <div className="max-w-6xl mx-auto px-6 py-12">
-                {/* Featured Section - Full Width Banner */}
-                <section className="mb-16">
-                    <div className="bg-black rounded-none overflow-hidden">
-                        <div className="max-w-4xl mx-auto py-12 px-6">
-                            <div className="flex flex-col items-center text-center">
-                                <img
-                                    src={featured.image}
-                                    alt={featured.title}
-                                    className="w-full max-w-2xl mb-6"
-                                />
-                                <h2 className="text-xl font-bold text-white mb-2">{featured.title}</h2>
-                                <p className="text-sm text-gray-400 mb-4">{featured.subtitle}</p>
-                                <p className="text-gray-300 mb-8 max-w-xl leading-relaxed">
-                                    {featured.description}
-                                </p>
-                                
-                                <h3 className="text-white font-bold mb-4">下载方式</h3>
-                                
-                                <div className="space-y-3 text-sm text-gray-400 mb-8">
-                                    <div>
-                                        <p className="mb-1">渠道 1：123 云盘（推荐使用浏览器下载，仅 0.5 元）</p>
-                                        <a
-                                            href={featured.download123}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-gray-500 hover:text-gray-300 underline break-all"
-                                        >
-                                            {featured.download123}
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <p className="mb-1">渠道 2：夸克网盘（团队夸克账号可使用，快速享用 SVIP 下载速度）</p>
-                                        <a
-                                            href={featured.downloadQuark}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-gray-500 hover:text-gray-300 underline break-all"
-                                        >
-                                            {featured.downloadQuark}
-                                        </a>
-                                    </div>
-                                </div>
+            {/* Featured Section - Sticky Background with Scroll */}
+            <section className="relative">
+                {/* Desktop: Fixed Background Image */}
+                <div className="hidden md:block sticky top-0 w-full h-screen overflow-hidden">
+                    <img
+                        src={featured.image}
+                        alt={featured.title}
+                        className="w-full h-full object-cover"
+                    />
+                </div>
 
-                                <div className="flex gap-3">
-                                    <a
-                                        href={featured.download123}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center px-6 py-2.5 border border-gray-600 bg-transparent text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
-                                    >
-                                        123 云盘下载
-                                    </a>
-                                    <a
-                                        href={featured.downloadQuark}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center px-6 py-2.5 border border-gray-600 bg-transparent text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
-                                    >
-                                        夸克下载
-                                    </a>
+                {/* Mobile: Simple Top-Bottom Layout */}
+                <div className="md:hidden">
+                    <div className="w-full h-64 overflow-hidden">
+                        <img
+                            src={featured.image}
+                            alt={featured.title}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div className="bg-black py-8">
+                        <div className="max-w-6xl mx-auto px-6">
+                            <h2 className="text-3xl font-bold text-white mb-3">{featured.title}</h2>
+                            <p className="text-lg text-gray-300 mb-4">{featured.subtitle}</p>
+                            <p className="text-base text-gray-200 mb-6 leading-relaxed">
+                                {featured.description}
+                            </p>
+
+                            <div className="space-y-3 mb-6">
+                                <div className="text-sm text-gray-300">
+                                    <p className="mb-2 font-medium">下载方式</p>
+                                    <div className="space-y-2">
+                                        <div>
+                                            <p className="mb-1">渠道 1：123 云盘（推荐使用浏览器下载，仅 0.5 元）</p>
+                                        </div>
+                                        <div>
+                                            <p className="mb-1">渠道 2：夸克网盘（团队夸克账号可使用，快速享用 SVIP 下载速度）</p>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div className="flex flex-wrap gap-3">
+                                <a
+                                    href={featured.download123}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
+                                >
+                                    123 云盘下载
+                                </a>
+                                <a
+                                    href={featured.downloadQuark}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
+                                >
+                                    夸克下载
+                                </a>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                {/* Must Read */}
-                <section id="must-read" className="mb-12">
-                    <h2 className="text-lg font-bold mb-4 text-gray-900">和梦团队下载专页必看</h2>
-                    <div className="bg-white rounded-lg p-6">
+                {/* Desktop: Content Sections that scroll over the image */}
+                <div className="hidden md:block relative -mt-[50vh] z-10">
+                    {/* Spacer to allow scrolling */}
+                    <div className="h-[50vh]"></div>
+
+                    {/* Introduction Card */}
+                    <div className="bg-gradient-to-t from-black via-black/90 to-transparent py-24">
+                        <div className="max-w-6xl mx-auto px-12">
+                            <h2 className="text-6xl font-bold text-white mb-4">{featured.title}</h2>
+                            <p className="text-2xl text-gray-300 mb-6">{featured.subtitle}</p>
+                            <p className="text-lg text-gray-200 mb-8 max-w-3xl leading-relaxed">
+                                {featured.description}
+                            </p>
+
+                            <div className="space-y-4 mb-8">
+                                <div className="text-sm text-gray-300">
+                                    <p className="mb-2 font-medium">下载方式</p>
+                                    <div className="space-y-2">
+                                        <div>
+                                            <p className="mb-1">渠道 1：123 云盘（推荐使用浏览器下载，仅 0.5 元）</p>
+                                        </div>
+                                        <div>
+                                            <p className="mb-1">渠道 2：夸克网盘（团队夸克账号可使用，快速享用 SVIP 下载速度）</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-wrap gap-3">
+                                <a
+                                    href={featured.download123}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
+                                >
+                                    123 云盘下载
+                                </a>
+                                <a
+                                    href={featured.downloadQuark}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
+                                >
+                                    夸克下载
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Main Content */}
+            <div className="max-w-6xl mx-auto px-6 py-12">
+                {/* Must Read - Animated Card */}
+                <ScrollCard id="must-read" className="mb-12">
+                    <div className="bg-white rounded-xl border-2 border-red-500 p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <h2 className="text-lg font-bold mb-4 text-red-600 flex items-center">
+                            <svg className="w-5 h-5 mr-2 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                            </svg>
+                            和梦团队下载专页必看
+                        </h2>
                         <div className="space-y-2 text-sm text-gray-600 leading-relaxed">
                             <p>1.本网站所有内容均已经过真人真机上机测试，合法有效无毒，请放心使用。</p>
                             <p>2.并非所有资源均同意转载分享，客户端所有权归原作者所有，若侵权请及时联系，我们会及时删除。侵权必究，让我们共同守护知识产权。</p>
@@ -240,29 +297,32 @@ export default function Download() {
                             <p>4.所有的文件都建议解压后使用！</p>
                             <p>5.群主在线期间，若您不想在网盘内下载，可以私信站主下载！请联系 3059400953。</p>
                             <p>6.若想上传你的资源，欢迎联系 QQ：3059400953！</p>
-                            <p>7.我们对所有的下载进行了初步的更新，您只需点击下划线的内容即可快速跳转网站！</p>
+                            <p>7.我们对所有的下载进行了更新，您可以点击按钮下载！</p>
                         </div>
                     </div>
-                </section>
+                </ScrollCard>
 
-                {/* Down Arrow */}
-                <div className="flex justify-center mb-12">
+                {/* Down Arrow - Animated */}
+                <ScrollCard className="flex justify-center mb-12">
                     <div className="flex flex-col items-center text-gray-400">
-                        <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                         </svg>
                         <span className="text-xs mt-2">向下开始</span>
                     </div>
-                </div>
+                </ScrollCard>
 
                 {/* Mod Packs */}
                 <section id="modpacks" className="mb-12">
-                    <h2 className="text-lg font-bold mb-6 text-gray-900">第一板块：MC 整合包分享</h2>
+                    <ScrollCard className="block mb-6">
+                        <h2 className="text-lg font-bold text-gray-900">第一板块：MC 整合包分享</h2>
+                    </ScrollCard>
                     <div className="grid md:grid-cols-2 gap-4">
-                        {modPacks.map((pack) => (
-                            <div
+                        {modPacks.map((pack, index) => (
+                            <ScrollCard
                                 key={pack.id}
-                                className="bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 transition-all"
+                                className="bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                                style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 <h3 className="text-sm font-bold mb-2 text-gray-900">
                                     {pack.id}. {pack.name}
@@ -321,19 +381,22 @@ export default function Download() {
                                         </a>
                                     )}
                                 </div>
-                            </div>
+                            </ScrollCard>
                         ))}
                     </div>
                 </section>
 
                 {/* Resources */}
                 <section id="resources">
-                    <h2 className="text-lg font-bold mb-6 text-gray-900">第二板块：剪辑资源分享</h2>
+                    <ScrollCard className="block mb-6">
+                        <h2 className="text-lg font-bold text-gray-900">第二板块：剪辑资源分享</h2>
+                    </ScrollCard>
                     <div className="grid md:grid-cols-3 gap-4">
-                        {resources.map((resource) => (
-                            <div
+                        {resources.map((resource, index) => (
+                            <ScrollCard
                                 key={resource.id}
-                                className="bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 transition-all"
+                                className="bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                                style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 <h3 className="text-sm font-bold mb-2 text-gray-900">
                                     {resource.name}
@@ -355,11 +418,22 @@ export default function Download() {
                                 >
                                     {getDiskType(resource.download)}下载 →
                                 </a>
-                            </div>
+                            </ScrollCard>
                         ))}
                     </div>
                 </section>
             </div>
+        </div>
+    )
+}
+
+// Scroll Animation Card Component
+function ScrollCard({ children, className, style, id }: { children: React.ReactNode, className?: string, style?: React.CSSProperties, id?: string }) {
+    const ref = useScrollAnimation()
+
+    return (
+        <div ref={ref} id={id} className={`scroll-animate ${className || ''}`} style={style}>
+            {children}
         </div>
     )
 }
