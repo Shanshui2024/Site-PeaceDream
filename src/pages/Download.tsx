@@ -1,18 +1,44 @@
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { siteConfig } from '../config/site'
+import { useState } from 'react'
 
 export default function Download() {
+    const [copiedCode, setCopiedCode] = useState<string | null>(null)
+
+    const handleCopyCode = (code: string, url: string) => {
+        navigator.clipboard.writeText(code).then(() => {
+            setCopiedCode(url)
+            // Show success message for 1.5 seconds before opening link
+            setTimeout(() => {
+                window.open(url, '_blank')
+                setTimeout(() => setCopiedCode(null), 2000)
+            }, 1500)
+        })
+    }
+
     const featured = {
-        title: 'Chaos Adventure丨混乱冒险生存',
-        subtitle: '双工作室合作出品整合包项目',
-        description: '每个 Boss 都拥有独特的背景故事与挑战机制。怪物种类丰富，从普通小怪到精英怪逐步升级，带来多样战斗体验。武器设计炫酷且功能各异，让玩家在畅爽打击感中感受探索的乐趣。',
-        image: 'https://pd123.my.canvasite.cn/download/_assets/media/b0eec2c1c7db0445cf9dac588e45abfd.png',
-        download123: 'https://www.123684.com/s/2GNBjv-Gtewh',
-        downloadQuark: 'https://pan.quark.cn/s/f81da337969c',
+        title: 'Name',
+        subtitle: '11111',
+        description: '111111',
+        image: 'what',
+        download123: 'link123',
+        downloadQuark: '',
     }
 
     const modPacks = [
         {
             id: 1,
+            name: 'Chaos Adventure丨混乱冒险生存',
+            version: '1.19.2',
+            type: '生存类、冒险类',
+            description: '每个 Boss 都拥有独特的背景故事与挑战机制。怪物种类丰富，从普通小怪到精英怪逐步升级，带来多样战斗体验。武器设计炫酷且功能各异，让玩家在畅爽打击感中感受探索的乐趣。',
+            downloads: [
+                { url: 'https://www.123684.com/s/2GNBjv-Gtewh', code: '' },
+                { url: 'https://pan.quark.cn/s/f81da337969c', code: '' }
+            ],
+        },
+        {
+            id: 2,
             name: '幽匿生存',
             version: '1.19.2',
             type: '生存类、冒险类',
@@ -23,7 +49,7 @@ export default function Download() {
             downloadCode: '5pqX',
         },
         {
-            id: 2,
+            id: 3,
             name: '乌托邦 3.2',
             version: '1.20.1',
             type: '生存类、趣味类',
@@ -34,7 +60,7 @@ export default function Download() {
             downloadCode: 'cjJi',
         },
         {
-            id: 3,
+            id: 4,
             name: 'Earth 3',
             version: '1.20.1',
             type: '生存类、冒险类',
@@ -45,7 +71,7 @@ export default function Download() {
             downloadCode: '',
         },
         {
-            id: 4,
+            id: 5,
             name: 'The First City',
             version: '1.19.3',
             type: '剧情类',
@@ -57,7 +83,7 @@ export default function Download() {
             downloadCode: '',
         },
         {
-            id: 5,
+            id: 6,
             name: '无尽贪婪',
             version: '1.18.2',
             type: '生存类、耗时间',
@@ -67,7 +93,7 @@ export default function Download() {
             downloadCode: '',
         },
         {
-            id: 6,
+            id: 7,
             name: '灾变',
             version: '1.20.1',
             type: '生存类、冒险类',
@@ -78,7 +104,7 @@ export default function Download() {
             downloadCode: '',
         },
         {
-            id: 7,
+            id: 8,
             name: '惊变 100 天',
             version: '1.20.1',
             type: '生存类、冒险类',
@@ -89,7 +115,7 @@ export default function Download() {
             downloadCode: '',
         },
         {
-            id: 8,
+            id: 9,
             name: '生活大冒险',
             version: '1.20.1',
             type: '生存类、冒险类',
@@ -100,7 +126,7 @@ export default function Download() {
             downloadCode: '',
         },
         {
-            id: 9,
+            id: 10,
             name: '粑粑空岛',
             version: '1.20.1',
             type: '空岛类',
@@ -111,7 +137,7 @@ export default function Download() {
             downloadCode: '',
         },
         {
-            id: 10,
+            id: 11,
             name: '吸血鬼生存',
             version: '1.20.1',
             type: '生存类',
@@ -121,7 +147,7 @@ export default function Download() {
             downloadCode: '',
         },
         {
-            id: 11,
+            id: 12,
             name: '幸运方块整合',
             version: '1.20.1',
             type: 'PVP 类',
@@ -164,120 +190,130 @@ export default function Download() {
 
     return (
         <div className="min-h-screen bg-gray-50">
-            {/* Featured Section - Sticky Background with Scroll */}
-            <section className="relative">
-                {/* Desktop: Fixed Background Image */}
-                <div className="hidden md:block sticky top-0 w-full h-screen overflow-hidden">
-                    <img
-                        src={featured.image}
-                        alt={featured.title}
-                        className="w-full h-full object-cover"
-                    />
-                </div>
-
-                {/* Mobile: Simple Top-Bottom Layout */}
-                <div className="md:hidden">
-                    <div className="w-full h-64 overflow-hidden">
+            {/* Featured Section - Full Screen Hero */}
+            {siteConfig.showFeaturedPack ? (
+                <section className="relative">
+                    {/* Desktop: Fixed Background Image */}
+                    <div className="hidden md:block sticky top-0 w-full h-screen overflow-hidden">
                         <img
                             src={featured.image}
                             alt={featured.title}
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <div className="bg-black py-8">
-                        <div className="max-w-6xl mx-auto px-6">
-                            <h2 className="text-3xl font-bold text-white mb-3">{featured.title}</h2>
-                            <p className="text-lg text-gray-300 mb-4">{featured.subtitle}</p>
-                            <p className="text-base text-gray-200 mb-6 leading-relaxed">
-                                {featured.description}
-                            </p>
 
-                            <div className="space-y-3 mb-6">
-                                <div className="text-sm text-gray-300">
-                                    <p className="mb-2 font-medium">下载方式</p>
-                                    <div className="space-y-2">
-                                        <div>
-                                            <p className="mb-1">渠道 1：123 云盘（推荐使用浏览器下载，仅 0.5 元）</p>
-                                        </div>
-                                        <div>
-                                            <p className="mb-1">渠道 2：夸克网盘（团队夸克账号可使用，快速享用 SVIP 下载速度）</p>
+                    {/* Mobile: Simple Top-Bottom Layout */}
+                    <div className="md:hidden">
+                        <div className="w-full h-64 overflow-hidden">
+                            <img
+                                src={featured.image}
+                                alt={featured.title}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="bg-black py-8">
+                            <div className="max-w-6xl mx-auto px-6">
+                                <h2 className="text-3xl font-bold text-white mb-3">{featured.title}</h2>
+                                <p className="text-lg text-gray-300 mb-4">{featured.subtitle}</p>
+                                <p className="text-base text-gray-200 mb-6 leading-relaxed">
+                                    {featured.description}
+                                </p>
+
+                                <div className="space-y-3 mb-6">
+                                    <div className="text-sm text-gray-300">
+                                        <p className="mb-2 font-medium">下载方式</p>
+                                        <div className="space-y-2">
+                                            <div>
+                                                <p className="mb-1">渠道 1：123 云盘（推荐使用浏览器下载，仅 0.5 元）</p>
+                                            </div>
+                                            <div>
+                                                <p className="mb-1">渠道 2：夸克网盘（团队夸克账号可使用，快速享用 SVIP 下载速度）</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="flex flex-wrap gap-3">
-                                <a
-                                    href={featured.download123}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
-                                >
-                                    123 云盘下载
-                                </a>
-                                <a
-                                    href={featured.downloadQuark}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
-                                >
-                                    夸克下载
-                                </a>
+                                <div className="flex flex-wrap gap-3">
+                                    <a
+                                        href={featured.download123}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
+                                    >
+                                        123 云盘下载
+                                    </a>
+                                    <a
+                                        href={featured.downloadQuark}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
+                                    >
+                                        夸克下载
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Desktop: Content Sections that scroll over the image */}
-                <div className="hidden md:block relative -mt-[50vh] z-10">
-                    {/* Spacer to allow scrolling */}
-                    <div className="h-[50vh]"></div>
+                    {/* Desktop: Content Sections that scroll over the image */}
+                    <div className="hidden md:block relative -mt-[50vh] z-10">
+                        {/* Spacer to allow scrolling */}
+                        <div className="h-[50vh]"></div>
 
-                    {/* Introduction Card */}
-                    <div className="bg-gradient-to-t from-black via-black/90 to-transparent py-24">
-                        <div className="max-w-6xl mx-auto px-12">
-                            <h2 className="text-6xl font-bold text-white mb-4">{featured.title}</h2>
-                            <p className="text-2xl text-gray-300 mb-6">{featured.subtitle}</p>
-                            <p className="text-lg text-gray-200 mb-8 max-w-3xl leading-relaxed">
-                                {featured.description}
-                            </p>
+                        {/* Introduction Card */}
+                        <div className="bg-gradient-to-t from-black via-black/90 to-transparent py-24">
+                            <div className="max-w-6xl mx-auto px-12">
+                                <h2 className="text-6xl font-bold text-white mb-4">{featured.title}</h2>
+                                <p className="text-2xl text-gray-300 mb-6">{featured.subtitle}</p>
+                                <p className="text-lg text-gray-200 mb-8 max-w-3xl leading-relaxed">
+                                    {featured.description}
+                                </p>
 
-                            <div className="space-y-4 mb-8">
-                                <div className="text-sm text-gray-300">
-                                    <p className="mb-2 font-medium">下载方式</p>
-                                    <div className="space-y-2">
-                                        <div>
-                                            <p className="mb-1">渠道 1：123 云盘（推荐使用浏览器下载，仅 0.5 元）</p>
-                                        </div>
-                                        <div>
-                                            <p className="mb-1">渠道 2：夸克网盘（团队夸克账号可使用，快速享用 SVIP 下载速度）</p>
+                                <div className="space-y-4 mb-8">
+                                    <div className="text-sm text-gray-300">
+                                        <p className="mb-2 font-medium">下载方式</p>
+                                        <div className="space-y-2">
+                                            <div>
+                                                <p className="mb-1">渠道 1：123 云盘（推荐使用浏览器下载，仅 0.5 元）</p>
+                                            </div>
+                                            <div>
+                                                <p className="mb-1">渠道 2：夸克网盘（团队夸克账号可使用，快速享用 SVIP 下载速度）</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="flex flex-wrap gap-3">
-                                <a
-                                    href={featured.download123}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
-                                >
-                                    123 云盘下载
-                                </a>
-                                <a
-                                    href={featured.downloadQuark}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
-                                >
-                                    夸克下载
-                                </a>
+                                <div className="flex flex-wrap gap-3">
+                                    <a
+                                        href={featured.download123}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
+                                    >
+                                        123 云盘下载
+                                    </a>
+                                    <a
+                                        href={featured.downloadQuark}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-6 py-3 border border-white bg-transparent text-white text-sm font-medium rounded hover:bg-white hover:text-black transition-colors"
+                                    >
+                                        夸克下载
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            ) : (
+                <section className="bg-white py-12">
+                    <div className="max-w-6xl mx-auto px-6">
+                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">和梦 PeaceDream</h1>
+                        <h2 className="text-xl md:text-2xl text-gray-600 mb-4">下载页</h2>
+                        <p className="text-base text-gray-500">精选优质 Minecraft 整合包，带来丰富的游戏体验</p>
+                    </div>
+                </section>
+            )}
 
             {/* Main Content */}
             <div className="max-w-6xl mx-auto px-6 py-12">
@@ -349,17 +385,54 @@ export default function Download() {
                                     )}
                                 </div>
                                 <div className="mt-3 pt-3 border-t border-gray-100 flex flex-wrap gap-2">
-                                    <a
-                                        href={pack.download}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center px-3 py-1.5 border border-gray-300 bg-white text-gray-700 text-xs font-medium rounded hover:bg-gray-50 transition-colors"
-                                    >
-                                        {getDiskType(pack.download)}下载
-                                        {pack.downloadCode && (
-                                            <span className="ml-1 text-gray-400">· {pack.downloadCode}</span>
-                                        )}
-                                    </a>
+                                    {pack.downloads ? (
+                                        pack.downloads.map((dl, index) => (
+                                            <button
+                                                key={index}
+                                                onClick={(e) => {
+                                                    e.preventDefault()
+                                                    if (dl.code) {
+                                                        handleCopyCode(dl.code, dl.url)
+                                                    } else {
+                                                        window.open(dl.url, '_blank')
+                                                    }
+                                                }}
+                                                className="inline-flex items-center px-3 py-1.5 border border-gray-300 bg-white text-gray-700 text-xs font-medium rounded hover:bg-gray-50 transition-colors relative"
+                                            >
+                                                {getDiskType(dl.url)}下载
+                                                {dl.code && (
+                                                    <span className="ml-1 text-gray-400">· {dl.code}</span>
+                                                )}
+                                                {copiedCode === dl.url && (
+                                                    <span className="absolute -top-6 right-0 px-2 py-0.5 text-xs bg-green-500 text-white rounded">
+                                                        已复制
+                                                    </span>
+                                                )}
+                                            </button>
+                                        ))
+                                    ) : (
+                                        <button
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                if (pack.downloadCode) {
+                                                    handleCopyCode(pack.downloadCode, pack.download)
+                                                } else {
+                                                    window.open(pack.download, '_blank')
+                                                }
+                                            }}
+                                            className="inline-flex items-center px-3 py-1.5 border border-gray-300 bg-white text-gray-700 text-xs font-medium rounded hover:bg-gray-50 transition-colors relative"
+                                        >
+                                            {getDiskType(pack.download)}下载
+                                            {pack.downloadCode && (
+                                                <span className="ml-1 text-gray-400">· {pack.downloadCode}</span>
+                                            )}
+                                            {copiedCode === pack.download && (
+                                                <span className="absolute -top-6 right-0 px-2 py-0.5 text-xs bg-green-500 text-white rounded">
+                                                    已复制
+                                                </span>
+                                            )}
+                                        </button>
+                                    )}
                                     {pack.video && (
                                         <a
                                             href={pack.video}
