@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+:root {
+  /* XyeBBS 风格：浅灰底 + 白卡 + 绿色强调 */
+  --bg: #f5f7f6;
+  --bg-panel: #ffffff;
+  --fg: #1c2024;
+  --fg-muted: #7b868e;
+  --line: #e6eaec;
+  --accent: #2fae5f;
+  --accent-soft: #2fae5f0f;
+  --radius: 12px;
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04),
+    0 4px 16px rgba(16, 24, 40, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141716;
+    --bg-panel: #1b1f1e;
+    --fg: #eceeed;
+    --fg-muted: #9aa3a0;
+    --line: #2a2f2d;
+    --accent: #3ec97a;
+    --accent-soft: #3ec97a14;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3),
+      0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--bg-panel);
+  --color-fg: var(--fg);
+  --color-muted: var(--fg-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---- 滚动淡入 ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---- 首屏立绘缓入 ---- */
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hero-in {
+  animation: hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-in-delay {
+  animation: hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+/* ---- 数字滚动 ---- */
+@keyframes count-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---- XyeBBS 风格卡片 ---- */
+.xy-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.xy-card:hover {
+  box-shadow: 0 8px 28px rgba(16, 24, 40, 0.12);
+  transform: translateY(-3px);
+}
+
+.xy-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--line);
+}
+
+.xy-meta {
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+.xy-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  line-height: 1.7;
+  padding: 1px 8px;
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.xy-title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+
+.xy-card:hover .xy-title {
+  color: var(--accent);
+}
+
+.xy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  border: 1px solid var(--line);
+  color: var(--fg);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+/* 图标按钮：与文字按钮等高，保证一排按钮尺寸一致 */
+.xy-btn-icon {
+  width: 34px;
+  min-width: 34px;
+  padding: 0;
+}
+
+.xy-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.xy-btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.xy-btn-primary:hover {
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* 通用圆角面板（站内其它区块统一风格） */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---- 移动端 Hero 立绘：左侧渐隐遮罩，形成半透明遮盖关系 ---- */
+.hero-art-veil {
+  -webkit-mask-image: linear-gradient(to left, black 40%, transparent 95%);
+  mask-image: linear-gradient(to left, black 40%, transparent 95%);
+}
+
+@media (min-width: 768px) {
+  .hero-art-veil {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+/* ---- 细网格背景（Hero） ---- */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 75%);
+}
