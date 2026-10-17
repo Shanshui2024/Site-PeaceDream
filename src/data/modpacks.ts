@@ -45,8 +45,8 @@ export const downloadNotices = [
   "想上传你的资源，欢迎联系 QQ：3059400953。",
 ] as const;
 
-export const qqGroupUrl =
-  "https://qm.qq.com/cgi-bin/qm/qr?authKey=b3VxyMWTm7QQam3ygPJKqwPbVr7pMSWF8%2BBlRlcWkY%2F8SgGSXflppovvtpo8JXZo&k=f_XJsUMdqxG__u_gsykrRSOjrRx_9rkK&noverify=0";
+/** QQ 加群链接 —— 与全站共用同一份定义 */
+export { qqGroupUrl } from "@/data/site";
 
 export const modPacks: ModPack[] = [
   {

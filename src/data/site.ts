@@ -9,7 +9,20 @@ export const site = {
     "和梦团队创立于 2023 年 7 月 11 日，从一间小小的闲聊群起步，逐步转型为专注于 Minecraft 与自媒体方向的创作者团队。我们相信纯粹的态度与适人的温度可以并存——做内容如此，待人亦然。",
   /** 保留旧门户地址备查，页面不再外链（旧域名可能停用，统一指向本站） */
   refSite: "https://pd.shanshui.site",
+  /**
+   * 站点正式地址 —— 用于 Open Graph / 分享卡片的绝对 URL。
+   * 部署到新域名时改这里即可（务必带协议、无尾部斜杠）。
+   */
+  url: "https://site-peace-dream.vercel.app",
+  /**
+   * 社交分享图 —— 由 scripts/gen-og.py 生成，文件名自带内容哈希。
+   * 社交平台按 URL 缓存 og:image，改图后文件名随之变化即可让缓存失效。
+   */
+  ogImage: "/og-b708e288.png",
 } as const;
+
+/** QQ 加群链接 —— 全站共用一份定义 */
+export const qqGroupUrl = "https://qm.qq.com/q/H3HMtMuBiw";
 
 export const stats = [
   { value: "472", label: "体系总人数", note: "截至 2026 年末" },
@@ -75,6 +88,7 @@ export const partners = [
   { name: "琼鸽团队", type: "合作关系" },
   { name: "缄厄斯札记", type: "合作关系" },
   { name: "亿讯云", type: "合作关系" },
+  { name: "云茨科技", type: "合作关系" },
 ] as const;
 
 export const characters = [

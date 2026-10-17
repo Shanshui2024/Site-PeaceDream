@@ -1,4 +1,11 @@
-import { site } from "@/data/site";
+import { site, qqGroupUrl } from "@/data/site";
+
+// 团队创立于 2023 年，止于当前年份。
+// 静态导出下必须用构建期注入的确定值：若在组件里直接调 new Date()，
+// 服务端（构建时）与客户端（访问时）可能算出不同年份，导致 React hydration 不匹配。
+const startYear = Number(site.founded.slice(0, 4));
+const currentYear = process.env.NEXT_PUBLIC_BUILD_YEAR ?? "2026";
+const yearRange = `${startYear} — ${currentYear}`;
 
 export default function Footer() {
   return (
@@ -24,6 +31,14 @@ export default function Footer() {
           </div>
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted">
             <a
+              href={qqGroupUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-accent"
+            >
+              加入群聊
+            </a>
+            <a
               href="/download/"
               className="transition-colors hover:text-accent"
             >
@@ -39,6 +54,12 @@ export default function Footer() {
               关于我们
             </a>
             <a
+              href="/pricing/"
+              className="transition-colors hover:text-accent"
+            >
+              商单定价
+            </a>
+            <a
               href="/#partners"
               className="transition-colors hover:text-accent"
             >
@@ -47,8 +68,8 @@ export default function Footer() {
           </nav>
         </div>
         <div className="mt-10 flex flex-col justify-between gap-2 border-t border-line pt-6 text-xs text-muted md:flex-row">
-          <p>© 2023 — 2027 {site.name} {site.nameEn}</p>
-          <p className="tabular-nums">优秀 · 和平 · 创意 · 友善</p>
+          <p>© {yearRange} {site.name} {site.nameEn}</p>
+          <p className="tabular-nums">{site.keywords.join(" · ")}</p>
         </div>
       </div>
     </footer>

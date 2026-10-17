@@ -1,4 +1,8 @@
-import { site } from "@/data/site";
+import { characters, qqGroupUrl, site } from "@/data/site";
+
+const artNames = characters.map((c) => c.name);
+const artAlt = `和梦虚拟人物：${artNames.join("与")}`;
+const artCaption = `${artNames.join(" / ")} · ${characters[0].role}`;
 
 export default function Hero() {
   return (
@@ -16,7 +20,7 @@ export default function Hero() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/assets/images/team/和梦团队立绘.png"
+          src="/assets/images/team/characters.png"
           alt=""
           width={440}
           height={600}
@@ -67,6 +71,25 @@ export default function Hero() {
             >
               整合包下载
             </a>
+            <a
+              href={qqGroupUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-line bg-panel px-6 py-2.5 text-sm shadow-sm transition-colors duration-200 hover:border-accent hover:text-accent"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                className="h-4 w-4"
+                aria-hidden="true"
+              >
+                <path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.9 8.9 0 01-3.8-.9L3 20.5l1.5-4.9A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z" />
+              </svg>
+              加入群聊
+            </a>
           </div>
         </div>
 
@@ -74,15 +97,15 @@ export default function Hero() {
         <div className="hero-in-delay relative mx-auto hidden w-full max-w-xs md:block md:max-w-sm">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/images/team/和梦团队立绘.png"
-            alt="和梦虚拟人物：和屿与梦辞"
+            src="/assets/images/team/characters.png"
+            alt={artAlt}
             width={440}
             height={600}
             className="h-auto w-full select-none"
             draggable={false}
           />
           <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center whitespace-nowrap border border-line bg-panel/85 px-3 py-1 text-[11px] tracking-wider text-muted backdrop-blur">
-            梦辞 / 和屿 · 和梦虚拟人物
+            {artCaption}
           </div>
         </div>
       </div>
