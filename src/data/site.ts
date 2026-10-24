@@ -18,7 +18,7 @@ export const site = {
    * 社交分享图 —— 由 scripts/gen-og.py 生成，文件名自带内容哈希。
    * 社交平台按 URL 缓存 og:image，改图后文件名随之变化即可让缓存失效。
    */
-  ogImage: "/og-b708e288.png",
+  ogImage: "/images/og-b708e288.png",
 } as const;
 
 /** QQ 加群链接 —— 全站共用一份定义 */

@@ -1,6 +1,6 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Reveal from "@/components/Reveal";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import Reveal from "@/components/ui/Reveal";
 import { priceSections, pricing } from "@/data/pricing";
 
 export default function PricingPage() {
@@ -34,6 +34,8 @@ export default function PricingPage() {
             <span className="font-bold text-red-600 dark:text-red-500">
               {pricing.notice.emphasis}
             </span>
+            <br />
+            {pricing.notice.afterSalesTip}
           </p>
         </Reveal>
 
@@ -131,6 +133,34 @@ export default function PricingPage() {
                   </ul>
                 </Reveal>
               ))}
+
+              {/* 售后说明 */}
+              {sec.afterSales && (
+                <Reveal
+                  delay={140}
+                  className="mt-4 flex items-center gap-2.5 border border-line bg-panel px-4 py-3"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                    className={`h-4 w-4 shrink-0 ${
+                      sec.afterSales === "无售后" ? "text-muted" : "text-accent"
+                    }`}
+                  >
+                    <path d="M12 3l7 3v5c0 4.6-3 8.4-7 9.5C8 19.4 5 15.6 5 11V6l7-3z" />
+                    <path d="M9.5 11.5l2 2 3.5-3.5" />
+                  </svg>
+                  <p className="text-xs leading-relaxed text-muted md:text-sm">
+                    <span className="mr-1.5 font-medium text-fg">售后说明</span>
+                    {sec.afterSales}
+                  </p>
+                </Reveal>
+              )}
             </section>
           ))}
         </div>

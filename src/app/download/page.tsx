@@ -9,10 +9,10 @@ import {
   resources,
   type PackLink,
 } from "@/data/modpacks";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Reveal from "@/components/Reveal";
-import { BilibiliIcon, BookIcon } from "@/components/icons";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import Reveal from "@/components/ui/Reveal";
+import { BilibiliIcon, BookIcon } from "@/components/ui/icons";
 
 function CopyButton({
   link,

@@ -2,6 +2,10 @@
  * 商单价格明细划分参考标准（第 20261017 版）
  * 来源：和梦精品工作室《商单价格明细划分参考标准（第20261017版）》
  *
+ * 修订记录：
+ * - 2026-10-24 皮肤制作类调价：基础定制 ¥20–50、精细定制 ¥50–100，其余不变
+ * - 2026-10-24 新增各商单类目售后说明（建筑制作类暂未规定，待工作室补充）
+ *
  * 说明：所有价格划分均为参考，实际按商单难易程度动态定价。
  */
 
@@ -15,6 +19,7 @@ export const pricing = {
     highlight: "参考",
     after: "，具体实际定价按照商单难易程度进行动态定价。",
     emphasis: "定价价格按照接单人自行决定",
+    afterSalesTip: "各商单分类的售后政策，详见对应类目下方的「售后说明」。",
   },
   formUrl: "https://ocnhbcz4uf2f.feishu.cn/share/base/form/shrcnG8ZvfyIYgE8KL51bDbHvid",
   formNote: "确认价格后，请通过商单申请表提交需求，填写合作内容与报价。",
@@ -34,6 +39,8 @@ export type PriceSection = {
   /** 无表格的段落型定价（如配音、视频剪辑） */
   paragraphs?: { title: string; lines: string[] }[];
   footer?: string;
+  /** 售后说明，展示在类目末尾 */
+  afterSales?: string;
 };
 
 export const priceSections: PriceSection[] = [
@@ -53,6 +60,7 @@ export const priceSections: PriceSection[] = [
         lines: ["额外定制制作服务端按照难易程度，收价 5–20 元。", "个人托管服务按照自行偏好定价。"],
       },
     ],
+    afterSales: "有人工托管就售后，无托管不售后",
   },
   {
     index: "02",
@@ -74,16 +82,18 @@ export const priceSections: PriceSection[] = [
       { label: "中等模组", spec: "多个物品/生物，基础交互，新群系/维度", price: "¥300–1500" },
       { label: "大型模组", spec: "完整玩法体系，新 BOSS、多系统联动、复杂机制", price: "¥1500–10000+" },
     ],
+    afterSales: "1 天售后",
   },
   {
     index: "04",
     title: "Minecraft 皮肤制作类",
     core: "按分辨率（64×64 / 128×128）、人设复杂度、是否分层/HD 细节。",
     rows: [
-      { label: "基础定制", spec: "64×64，简单人设，个人使用", price: "¥10–40" },
-      { label: "精细定制", spec: "128×128，复杂服饰/细节，分层效果", price: "¥30–100" },
+      { label: "基础定制", spec: "64×64，简单人设，个人使用", price: "¥20–50" },
+      { label: "精细定制", spec: "128×128，复杂服饰/细节，分层效果", price: "¥50–100" },
       { label: "泳装", spec: "产阳花，上吧", price: "14.9" },
     ],
+    afterSales: "两次售后",
   },
   {
     index: "05",
@@ -93,6 +103,7 @@ export const priceSections: PriceSection[] = [
       { label: "简易材质包", spec: "16x/32x，仅修改部分方块/物品，适配玩法。部分 GUI 改变", price: "¥60–200" },
       { label: "完整材质包", spec: "32x/64x，全方块+物品+GUI+生物", price: "¥200+" },
     ],
+    afterSales: "两次售后",
   },
   {
     index: "06",
@@ -103,6 +114,7 @@ export const priceSections: PriceSection[] = [
       { label: "中等数据包", spec: "自定义生物、简单小游戏机制、多函数联动", price: "¥60–100" },
       { label: "复杂数据包", spec: "完整游戏模式、多系统玩法、大量指令与函数", price: "¥100+" },
     ],
+    afterSales: "1 天售后",
   },
   {
     index: "07",
@@ -113,6 +125,7 @@ export const priceSections: PriceSection[] = [
       { label: "中等插件", spec: "多 GUI 界面、经济/权限系统、小型小游戏", price: "¥300–1500" },
       { label: "复杂插件", spec: "完整游戏模式、跨服系统、数据库联动", price: "¥1500–3000" },
     ],
+    afterSales: "1 天售后",
   },
   {
     index: "08",
@@ -125,12 +138,14 @@ export const priceSections: PriceSection[] = [
         lines: ["普通质量（剧情类） ¥10/秒", "高品质（打斗类） ¥30/秒"],
       },
     ],
+    afterSales: "无售后",
   },
   {
     index: "09",
     title: "配音录制",
     core: "按文案长度定价。",
     footer: "朗读内容不低于 50 字，未超过 50 字按照 50 字计算，起读价 4 元（50 字）。每 2 块钱加 15 个字。",
+    afterSales: "无售后",
   },
   {
     index: "10",
@@ -142,5 +157,6 @@ export const priceSections: PriceSection[] = [
       { label: "高级剪辑", spec: "MC 集锦/混剪、带片头包装、分镜设计", price: "¥80–120 / 分钟" },
     ],
     footer: "加急出片：加收原价的 30%–50%。",
+    afterSales: "无售后",
   },
 ];

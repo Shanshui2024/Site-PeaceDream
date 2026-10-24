@@ -35,7 +35,7 @@
 | 动画 | 纯 CSS + IntersectionObserver | 不引入 framer-motion，保持轻量 |
 | 包管理 | npm（registry.npmmirror.com 镜像） | 国内源安装 |
 
-## 四、页面结构（单页 + 锚点导航）
+## 四、页面结构（首页单页锚点 + 商单定价 / 下载中心子页）
 
 ```
 Header（固定顶栏：Logo文字 PEACEDREAM / 锚点导航 / 直角按钮）
@@ -45,6 +45,8 @@ Header（固定顶栏：Logo文字 PEACEDREAM / 锚点导航 / 直角按钮）
 ├── #studio   和梦精品工作室：配音组20 / 技术制作5 / 设计制作5 / 动画部3 / 剪辑部3 / 建筑后勤4
 ├── #events   活动动态：盛夏和梦杯（2027 第三届）、四年之约线下团建（成都·2027.7）、新年大行动、城市追杀
 ├── #partners 合作伙伴：空晶宇宙 / 千阙云庭 / 段山岚客 / 方块烬火社 / 暗潮学院 / 琼鸽团队 / 缄厄斯札记 / 亿讯云
+├── /pricing  商单定价：十大类目价格划分 + 售后说明 + 商单申请表入口
+├── /download 下载中心：MC 整合包 / 数据包 / 剪辑资源分享
 └── Footer    口号、快速链接（pd.shanshui.site 教程/服务状态）、© 2023-2027 PeaceDream
 ```
 
@@ -52,32 +54,37 @@ Header（固定顶栏：Logo文字 PEACEDREAM / 锚点导航 / 直角按钮）
 
 ```
 Site-PDHomeNew/
-├── plan.md
+├── docs/
+│   └── plan.md             # 本文件：开发计划与设计规范
 ├── README.md
 ├── next.config.ts          # output: 'export', images unoptimized
 ├── package.json
 ├── tsconfig.json
 ├── postcss.config.mjs
+├── scripts/                # 资产生成脚本（og 分享图 / PWA 图标）
 ├── public/
-│   └── assets/images/team/和梦团队立绘.png
+│   ├── favicon.ico
+│   ├── site.webmanifest
+│   ├── icons/              # PWA 图标
+│   └── images/
+│       ├── covers/         # 整合包封面
+│       ├── team/           # 团队立绘（和屿 & 梦辞）
+│       └── og-*.png        # 社交分享卡片
 └── src/
     ├── app/
     │   ├── layout.tsx      # 元信息、字体、主题
-    │   ├── page.tsx        # 单页组装
-    │   └── globals.css     # Tailwind 入口 + 动效 keyframes
+    │   ├── page.tsx        # 首页组装（单页锚点）
+    │   ├── globals.css     # Tailwind 入口 + 动效 keyframes
+    │   ├── pricing/        # 商单定价页
+    │   └── download/       # 下载中心
     ├── components/
-    │   ├── Header.tsx
-    │   ├── Hero.tsx
-    │   ├── Section.tsx     # 通用区块容器（标题 + 编号，呼应年终PPT的 01/02 风格）
-    │   ├── About.tsx
-    │   ├── Stats.tsx
-    │   ├── Studio.tsx
-    │   ├── Events.tsx
-    │   ├── Partners.tsx
-    │   ├── Footer.tsx
-    │   └── Reveal.tsx      # 滚动淡入包装组件
+    │   ├── layout/         # Header / Footer
+    │   ├── sections/       # Hero / About / Stats / Studio / Events / Partners
+    │   └── ui/             # Section（区块容器，标题+编号）/ Reveal（滚动淡入）/ icons
     └── data/
-        └── site.ts         # 全部文案/数据集中管理，便于后续修改
+        ├── site.ts         # 站点文案/数据集中管理，便于后续修改
+        ├── pricing.ts      # 商单价格划分与售后说明
+        └── modpacks.ts     # 整合包与剪辑资源
 ```
 
 ## 六、开发步骤（每步一次 commit）

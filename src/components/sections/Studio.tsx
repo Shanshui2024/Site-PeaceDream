@@ -1,6 +1,6 @@
 import { studio } from "@/data/site";
-import Reveal from "./Reveal";
-import Section from "./Section";
+import Reveal from "../ui/Reveal";
+import Section from "../ui/Section";
 
 export default function Studio() {
   return (

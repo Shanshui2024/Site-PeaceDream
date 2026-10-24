@@ -20,7 +20,7 @@ export default function Hero() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/assets/images/team/characters.png"
+          src="/images/team/characters.png"
           alt=""
           width={440}
           height={600}
@@ -97,7 +97,7 @@ export default function Hero() {
         <div className="hero-in-delay relative mx-auto hidden w-full max-w-xs md:block md:max-w-sm">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/images/team/characters.png"
+            src="/images/team/characters.png"
             alt={artAlt}
             width={440}
             height={600}

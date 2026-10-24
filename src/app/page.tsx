@@ -1,11 +1,11 @@
-import About from "@/components/About";
-import Events from "@/components/Events";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Partners from "@/components/Partners";
-import Stats from "@/components/Stats";
-import Studio from "@/components/Studio";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import About from "@/components/sections/About";
+import Events from "@/components/sections/Events";
+import Hero from "@/components/sections/Hero";
+import Partners from "@/components/sections/Partners";
+import Stats from "@/components/sections/Stats";
+import Studio from "@/components/sections/Studio";
 
 export default function Home() {
   return (

@@ -5,3 +5,6 @@ out/
 next-env.d.ts
 .DS_Store
 out_old_*
+.kilo/
+# 本地资产生成脚本，仅开发机保留，不随仓库分发
+scripts/

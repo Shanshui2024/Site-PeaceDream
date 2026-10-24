@@ -56,7 +56,7 @@ export const modPacks: ModPack[] = [
     type: "魔法类、剧情类",
     description:
       "和梦团队出品。恭迎踏入幻梦界，主张梦境与魔幻：主线篇章「帕斯特之梦」为必经奇旅，循迹前行可解锁专属悠远剧情；副本「暮色森林」随心择往，另有新生魔艺衍化无尽法术、车万女仆相伴日常。",
-    cover: "/assets/images/covers/dwa.jpg",
+    cover: "/images/covers/dwa.jpg",
     tags: ["服务端/客户端", "魔法", "剧情"],
     author: "Tbang_（和梦团队）",
     updated: "更新于 142 天前",
@@ -76,7 +76,7 @@ export const modPacks: ModPack[] = [
     type: "数据包 · 多人玩法",
     description:
       "和梦团队原创数据包。只要我受伤了，我的朋友就会直接嘎掉。你和你的朋友能否完美通关，还是在游戏结束后问候对方全家。",
-    cover: "/assets/images/covers/twd.jpg",
+    cover: "/images/covers/twd.jpg",
     tags: ["服务端/客户端", "数据包", "多人"],
     author: "和梦团队（原创）",
     updated: "更新于 242 天前",
@@ -96,7 +96,7 @@ export const modPacks: ModPack[] = [
     type: "生存类、冒险类",
     description:
       "在这个整合包中，我们需要对抗古老的幽匿力量，病毒会在五天后爆发。其病毒每隔一段时间就会进化一次，我们的任务是击杀古代幽匿心脏，阻止病毒扩散。",
-    cover: "/assets/images/covers/sculk.jpg",
+    cover: "/images/covers/sculk.jpg",
     tags: ["生存", "冒险"],
     author: "和梦精品工作室",
     tip: "先切换创造，使用【开发者 幽匿主茎发生器】后才能开始游戏。",
@@ -111,7 +111,7 @@ export const modPacks: ModPack[] = [
     type: "剧情类",
     description:
       "本客户端重点对远古城市进行了改造，击杀坚守者，插入钥匙，来探索这不为人知的真正城堡吧。",
-    cover: "/assets/images/covers/firstcity.jpg",
+    cover: "/images/covers/firstcity.jpg",
     tags: ["剧情", "远古城市"],
     author: "和梦精品工作室",
     tip: "游戏前期需要长时间生存攒齐装备，并且要找远古城市。",
@@ -128,7 +128,7 @@ export const modPacks: ModPack[] = [
     type: "生存类、冒险类",
     description:
       "村民变成了可以正常交流的人类，并且可以正常建立关系。生活大冒险是最适合用来养老的整合包。",
-    cover: "/assets/images/covers/life.jpg",
+    cover: "/images/covers/life.jpg",
     tags: ["生存", "凡家物语"],
     author: "和梦精品工作室",
     video:
@@ -141,7 +141,7 @@ export const modPacks: ModPack[] = [
     version: "1.20.1",
     type: "生存类",
     description: "我的世界，但是我变成了吸血鬼。这种情况下我该怎么生存。",
-    cover: "/assets/images/covers/vampire.jpg",
+    cover: "/images/covers/vampire.jpg",
     tags: ["生存", "吸血鬼"],
     author: "和梦精品工作室",
     wiki: "https://www.mcmod.cn/class/930.html",
