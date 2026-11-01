@@ -23,6 +23,19 @@ export const pricing = {
   },
   formUrl: "https://ocnhbcz4uf2f.feishu.cn/share/base/form/shrcnG8ZvfyIYgE8KL51bDbHvid",
   formNote: "确认价格后，请通过商单申请表提交需求，填写合作内容与报价。",
+  joinGroup: {
+    title: "加入交流群",
+    desc: "商单咨询、进度沟通与制作答疑，欢迎进群一站式对接。",
+    buttonLabel: "加入 QQ 群",
+  },
+  contact: {
+    title: "联系邮箱",
+    lead: "服务反馈、点单指导等问题欢迎联系邮箱，收到消息后会及时回复：",
+    entries: [
+      { badge: "推荐", role: "客服", email: "kefu@peacedream.fun" },
+      { badge: "回复较慢", role: "主管", email: "admin@peacedream.fun" },
+    ],
+  },
 } as const;
 
 export type PriceRow = {

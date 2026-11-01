@@ -2,6 +2,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import Reveal from "@/components/ui/Reveal";
 import { priceSections, pricing } from "@/data/pricing";
+import { qqGroupUrl } from "@/data/site";
 
 export default function PricingPage() {
   return (
@@ -39,8 +40,76 @@ export default function PricingPage() {
           </p>
         </Reveal>
 
+        {/* 入群按钮 */}
+        <Reveal
+          delay={110}
+          className="mt-6 panel flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
+        >
+          <div>
+            <h2 className="text-base font-semibold">{pricing.joinGroup.title}</h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted">
+              {pricing.joinGroup.desc}
+            </p>
+          </div>
+          <a
+            href={qqGroupUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-line bg-panel px-6 py-3 text-sm font-medium shadow-sm transition-colors duration-200 hover:border-accent hover:text-accent"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4"
+              aria-hidden="true"
+            >
+              <path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.9 8.9 0 01-3.8-.9L3 20.5l1.5-4.9A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z" />
+            </svg>
+            {pricing.joinGroup.buttonLabel}
+          </a>
+        </Reveal>
+
+        {/* 联系邮箱 */}
+        <Reveal delay={150} className="mt-6 panel p-5 sm:p-6">
+          <h2 className="text-base font-semibold">{pricing.contact.title}</h2>
+          <p className="mt-1.5 text-sm leading-relaxed text-muted">
+            {pricing.contact.lead}
+          </p>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            {pricing.contact.entries.map((entry) => (
+              <li
+                key={entry.email}
+                className="flex items-center gap-3 rounded-lg border border-line px-4 py-3"
+              >
+                <span
+                  className={`shrink-0 border px-2 py-0.5 text-[11px] font-medium ${
+                    entry.badge === "推荐"
+                      ? "border-accent/40 bg-accent-soft text-accent"
+                      : "border-line text-muted"
+                  }`}
+                >
+                  {entry.badge}
+                </span>
+                <div className="min-w-0">
+                  <p className="text-sm font-medium">{entry.role}</p>
+                  <a
+                    href={`mailto:${entry.email}`}
+                    className="text-xs text-accent underline-offset-4 hover:underline"
+                  >
+                    {entry.email}
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
         {/* 申请入口 */}
-        <Reveal delay={140} className="mt-6 panel flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+        <Reveal delay={190} className="mt-6 panel flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
           <div>
             <h2 className="text-base font-semibold">提交商单申请</h2>
             <p className="mt-1.5 text-sm leading-relaxed text-muted">
